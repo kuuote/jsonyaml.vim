@@ -1,0 +1,29 @@
+*jsonyaml.txt* JSONとYAMLを相互変換するやつ
+
+Author: kuuote
+License: NYSL
+
+☆はじめに
+
+*jsonyaml* はJSONとYAMLを相互変換できるようにすることで
+JSONを編集しやすくするためのプラグインです。
+|denops.vim|を経由しDenoのライブラリを呼び出すため
+Deno及びdenops.vimの導入が必要です。
+
+https://deno.land
+https://github.com/vim-denops/denops.vim
+
+☆使い方
+
+インターフェースは用意していないので各自で定義をお願いします。
+私は `ftplugin/json.vim` に以下のような記述をしています。
+
+>
+  command! -buffer -range=% JY call denops#request('jsonyaml', 'jsonYAML', [<line1>, <line2>])
+  command! -buffer -range=% YJ call denops#request('jsonyaml', 'yamlJSON', [<line1>, <line2>])
+<
+
+これによりjsonファイルを開いた際に範囲を指定可能な
+JYコマンド及びYJコマンドを使用可能になります。
+
+vim: ft=help
